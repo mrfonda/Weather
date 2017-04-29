@@ -12,10 +12,15 @@
 		7639DF741EB218BB001F566D /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DF731EB218BB001F566D /* WeatherUITests.swift */; };
 		7639DFB01EB3DA88001F566D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFAA1EB3DA88001F566D /* Assets.xcassets */; };
 		7639DFB11EB3DA88001F566D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFAB1EB3DA88001F566D /* Constants.swift */; };
-		7639DFB21EB3DA88001F566D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFAC1EB3DA88001F566D /* Info.plist */; };
 		7639DFB31EB3DA88001F566D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFAD1EB3DA88001F566D /* AppDelegate.swift */; };
-		7639DFB91EB3DA91001F566D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFB51EB3DA91001F566D /* Main.storyboard */; };
-		7639DFBA1EB3DA91001F566D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFB71EB3DA91001F566D /* LaunchScreen.storyboard */; };
+		7639DFBB1EB3E383001F566D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFB51EB3DA91001F566D /* Main.storyboard */; };
+		7639DFBC1EB3E383001F566D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFB71EB3DA91001F566D /* LaunchScreen.storyboard */; };
+		7639DFBF1EB3E3FE001F566D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFBE1EB3E3FE001F566D /* City.swift */; };
+		7639DFC11EB3EDFD001F566D /* DayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFC01EB3EDFD001F566D /* DayWeather.swift */; };
+		7639DFC31EB40775001F566D /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFC21EB40775001F566D /* CitiesTableViewController.swift */; };
+		7639DFC81EB41916001F566D /* CustomAlertDialogViewCongroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFC61EB41916001F566D /* CustomAlertDialogViewCongroller.swift */; };
+		7639DFC91EB41916001F566D /* CustomAlertDialogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFC71EB41916001F566D /* CustomAlertDialogViewCongroller.xib */; };
+		7639DFCB1EB41DD1001F566D /* CustomAlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFCA1EB41DD1001F566D /* CustomAlertDialogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,12 @@
 		7639DFAD1EB3DA88001F566D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7639DFB61EB3DA91001F566D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7639DFB81EB3DA91001F566D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7639DFBE1EB3E3FE001F566D /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		7639DFC01EB3EDFD001F566D /* DayWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeather.swift; sourceTree = "<group>"; };
+		7639DFC21EB40775001F566D /* CitiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
+		7639DFC61EB41916001F566D /* CustomAlertDialogViewCongroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertDialogViewCongroller.swift; sourceTree = "<group>"; };
+		7639DFC71EB41916001F566D /* CustomAlertDialogViewCongroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertDialogViewCongroller.xib; sourceTree = "<group>"; };
+		7639DFCA1EB41DD1001F566D /* CustomAlertDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertDialogView.swift; sourceTree = "<group>"; };
 		E6BDF8B913E7C7F3C8547557 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,12 +125,15 @@
 		7639DF4F1EB218BB001F566D /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				7639DFC41EB41895001F566D /* Controllers */,
+				7639DFBD1EB3E3E1001F566D /* Models */,
 				7639DFB51EB3DA91001F566D /* Main.storyboard */,
 				7639DFB71EB3DA91001F566D /* LaunchScreen.storyboard */,
 				7639DFAA1EB3DA88001F566D /* Assets.xcassets */,
 				7639DFAB1EB3DA88001F566D /* Constants.swift */,
 				7639DFAC1EB3DA88001F566D /* Info.plist */,
 				7639DFAD1EB3DA88001F566D /* AppDelegate.swift */,
+				7639DFC21EB40775001F566D /* CitiesTableViewController.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -140,6 +154,33 @@
 				7639DF751EB218BB001F566D /* Info.plist */,
 			);
 			path = WeatherUITests;
+			sourceTree = "<group>";
+		};
+		7639DFBD1EB3E3E1001F566D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7639DFBE1EB3E3FE001F566D /* City.swift */,
+				7639DFC01EB3EDFD001F566D /* DayWeather.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7639DFC41EB41895001F566D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7639DFC51EB418A2001F566D /* CustomAlertDialogViewCongroller */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7639DFC51EB418A2001F566D /* CustomAlertDialogViewCongroller */ = {
+			isa = PBXGroup;
+			children = (
+				7639DFC61EB41916001F566D /* CustomAlertDialogViewCongroller.swift */,
+				7639DFC71EB41916001F566D /* CustomAlertDialogViewCongroller.xib */,
+				7639DFCA1EB41DD1001F566D /* CustomAlertDialogView.swift */,
+			);
+			name = CustomAlertDialogViewCongroller;
 			sourceTree = "<group>";
 		};
 		E75CCCC04256C38AB6DE586E /* Frameworks */ = {
@@ -264,9 +305,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7639DFB91EB3DA91001F566D /* Main.storyboard in Resources */,
-				7639DFBA1EB3DA91001F566D /* LaunchScreen.storyboard in Resources */,
-				7639DFB21EB3DA88001F566D /* Info.plist in Resources */,
+				7639DFBB1EB3E383001F566D /* Main.storyboard in Resources */,
+				7639DFC91EB41916001F566D /* CustomAlertDialogViewCongroller.xib in Resources */,
+				7639DFBC1EB3E383001F566D /* LaunchScreen.storyboard in Resources */,
 				7639DFB01EB3DA88001F566D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +382,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7639DFB31EB3DA88001F566D /* AppDelegate.swift in Sources */,
+				7639DFC31EB40775001F566D /* CitiesTableViewController.swift in Sources */,
+				7639DFC11EB3EDFD001F566D /* DayWeather.swift in Sources */,
+				7639DFC81EB41916001F566D /* CustomAlertDialogViewCongroller.swift in Sources */,
 				7639DFB11EB3DA88001F566D /* Constants.swift in Sources */,
+				7639DFBF1EB3E3FE001F566D /* City.swift in Sources */,
+				7639DFCB1EB41DD1001F566D /* CustomAlertDialogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6BDF8B913E7C7F3C8547557 /* Pods-Weather.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JM5GZMKUEC;
@@ -511,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4D2EB0FE9492EEA3DAF6EC7B /* Pods-Weather.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JM5GZMKUEC;
