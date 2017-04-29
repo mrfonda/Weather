@@ -7,10 +7,9 @@
 //
 
 import UIKit
-
+import MapKit
 
 class CustomAlertDialogViewCongroller : UIViewController {
-    override func loadView() {
-        self.view = CustomAlertDialogView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
-    }
+    @IBOutlet weak var mapView: MKMapView!
+
 }

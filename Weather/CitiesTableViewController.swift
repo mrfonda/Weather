@@ -11,17 +11,20 @@ import CoreLocation
 import RealmSwift
 import Realm
 
-class CitiesTableViewController: UITableViewController, CLLocationManagerDelegate {
+import PopupDialog
+
+class CitiesTableViewController: UITableViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     let realm = try! Realm()
     let locationManager = CLLocationManager()
+    
     var cities: Results<City> {
         get {
             return realm.objects(City.self)
         }
     }
     
-
+    
     
     func clearButtonTapped() {
         let alert = UIAlertController(title: "Wait a sec", message: "Are you really going to delete all your locations?", preferredStyle: .alert)
@@ -103,8 +106,6 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
                                                         
                                                     }))
                                                     self.present(alert, animated: true, completion: nil)
-                                                    
-                                                
                                                 }
                                                 else {
                                                     alert()
@@ -115,7 +116,28 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     }
     
     @IBAction func addCity(_ sender: UIBarButtonItem) {
-    tableView.tableHeaderView = UISearchBar()
+        
+        
+        
+        let viewController = AutoCompleteViewController(nibName: "AutoCompleteViewController", bundle: nil)
+        //self.storyboard.instantiateViewController(withIdentifier: "someViewController")
+        
+        let popup = PopupDialog(viewController: viewController, buttonAlignment: .horizontal, transitionStyle: .bounceUp, gestureDismissal: true)
+        
+        // Create first button
+        let buttonCancel = CancelButton(title: "Cancel") {
+        }
+        
+        // Create second button
+        let buttonPay = DefaultButton(title: "Add") {
+            popup.dismiss(animated: true)
+        }
+            
+        buttonPay.dismissOnTap = false
+        // Add buttons to dialog
+        popup.addButtons([buttonCancel, buttonPay])
+        self.present(popup, animated: true, completion: nil)
+            
     }
     
     override func viewDidLoad() {
@@ -129,30 +151,37 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
         let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
         navigationItem.leftBarButtonItem = editButton
         tableView.tableFooterView = UIView()
+        
+       
+//            var shiftInPresentation = JellyShiftInPresentation()
+//            shiftInPresentation.direction = .left
+//            let animator = JellyAnnimator(presentation:presentation)
+//            self.jellyAnimator = animator
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return cities.count
     }
-
+    
     private func deleteCity(byName: String) {
         if let cityToDelete = realm.object(ofType: City.self, forPrimaryKey: byName) {
             try! realm.write {
@@ -195,10 +224,10 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -208,12 +237,12 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
             switch  id {
             case "citiesToForecast":
                 if let dvc = segue.destination as? UIViewController {
-                   dvc.title = (sender as! City).name
+                    dvc.title = (sender as! City).name
                 }
             default:
                 break
             }
         }
     }
-
+    
 }

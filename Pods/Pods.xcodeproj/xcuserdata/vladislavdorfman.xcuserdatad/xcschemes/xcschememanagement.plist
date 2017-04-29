@@ -14,12 +14,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KeychainSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Weather.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PopupDialog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,17 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>170F1B06C03F9CA9A9E2273702226FF2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2489CA85786CDDC65721FA8395D458B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38ACA430605AFB4229712A18BDDF5086</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6863C9B488F8AB5BDB44ABADD51A2FE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84BB3966FF8F841D60CBCC78B86EBDBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0303F03CF2F8DEA8B03390FB341D0F4</key>
+		<key>AD36EF9AD57D656EB2D430EE1483EF10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C49D83D31AD6A7E3EB82C9B4D4E56BB4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

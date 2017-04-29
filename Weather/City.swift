@@ -34,6 +34,9 @@ class City : Object, Mappable{
         lat <- map["lat"]
     }
 }
+
+
+
 //"name": "Ashgabat, Turkmenistan",
 //"type": "city",
 //"c": "TM",
