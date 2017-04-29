@@ -18,7 +18,7 @@ class City : Object, Mappable{
     dynamic var name = ""
     dynamic var lon = ""
     dynamic var lat = ""
-    var forecast : List<DayWeather>?
+    let forecast = List<DayWeather>()
     override static func primaryKey() -> String? {
         return "name"
     }

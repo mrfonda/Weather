@@ -17,7 +17,7 @@ import ObjectMapper
 class API: NSObject {
     
     static let manager = Alamofire.SessionManager.default
-
+    static let realm = try! Realm()
     // MARK: URLRequestConvertible Enum
     // Defining request Router for handling URLRequests
     enum Router: URLRequestConvertible {
@@ -58,7 +58,7 @@ class API: NSObject {
                 return [
                     "client_id" : Config.forecast_client_id,
                     "client_secret" : Config.forecast_client_secret,
-                    "p" : [latitude , longitude],
+                    "p" : "\(latitude),\(longitude)",
                     "limit" : Config.daysInForecast
                 ]
 
@@ -88,11 +88,12 @@ class API: NSObject {
             
             
             switch self {
-            case .autocomplete:
+            case .autocomplete, .forecast:
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: parameters)
             default:
                 break
             }
+            print(urlRequest)
             return urlRequest
         }
         
@@ -114,35 +115,30 @@ class API: NSObject {
     }
 
 
-static func fetchForecastData(latitude: String, longitude: String, success:@escaping ([DayWeather]) -> Void, fail:@escaping (_ error:NSError)->Void)->Void {
-    API.manager.request(Router.forecast(latitude: latitude, longitude: longitude))
-        .responseArray { (response : DataResponse<[City]>) in
-            
-//            switch response.result {
-//            case .success(let items):
-//                success(items)
-//            case .failure(let error) :
-//                fail(error as NSError)
-//            }
-            
-            //                switch response.result {
-            //                case .success(let item):
-            //                    do {
-            //                        let realm = try Realm()
-            //                        try realm.write {
-            //                            for item in items {
-            //                                realm.add(item, update: true)
-            //                            }
-            //                        } catch let error as NSError {
-            //                            fail(error:error)
-            //                        }
-            //                        success()
-            //                case .failure(let error):
-            //                        fail(error:error)
-            //                    }
-            //                    
-            //                }
-            
+    static func fetchForecastData(city: City, success:@escaping () -> Void, fail:@escaping (_ error:NSError)->Void, updateProgress : @escaping (_ progress : Float)->Void)->Void {
+        API.manager.request(Router.forecast(latitude: city.lat, longitude: city.lon))
+            .downloadProgress(closure: { (progress: Progress) in
+                updateProgress(Float(progress.fractionCompleted))
+            })
+            .responseObject { (response : DataResponse<ForecastResponce>)  in
+                
+                switch response.result {
+                case .success(let forecastResponse):
+                    if forecastResponse.success {
+                        try! realm.write {
+                            if !city.forecast.isEmpty {
+                                city.forecast.removeAll()
+                            }
+                            city.forecast.append(objectsIn: forecastResponse.response[0].periods) //List((days[0].periods))
+                            realm.add(city, update: true)
+                        }
+                        
+                        success()
+                    }
+                case .failure(let error) :
+                    fail(error as NSError)
+                }
+                
+        }
     }
-}
 }

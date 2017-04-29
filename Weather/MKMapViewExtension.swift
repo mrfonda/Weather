@@ -17,20 +17,20 @@ let DEGREES = 180.0
 extension MKMapView{
   //MARK: Map Conversion Methods
   fileprivate func longitudeToPixelSpaceX(_ longitude:Double)->Double{
-    return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * M_PI / DEGREES)
+    return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * Double.pi / DEGREES)
   }
   
   fileprivate func latitudeToPixelSpaceY(_ latitude:Double)->Double{
-    return round(MERCATOR_OFFSET - MERCATOR_RADIUS * log((1 + sin(latitude * M_PI / DEGREES)) / (1 - sin(latitude * M_PI / DEGREES))) / 2.0)
+    return round(MERCATOR_OFFSET - MERCATOR_RADIUS * log((1 + sin(latitude * Double.pi / DEGREES)) / (1 - sin(latitude * Double.pi / DEGREES))) / 2.0)
   }
   
   fileprivate func pixelSpaceXToLongitude(_ pixelX:Double)->Double{
-    return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * DEGREES / M_PI
+    return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * DEGREES / Double.pi
     
   }
   
   fileprivate func pixelSpaceYToLatitude(_ pixelY:Double)->Double{
-    return (M_PI / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * DEGREES / M_PI
+    return (Double.pi / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * DEGREES / Double.pi
   }
   
   fileprivate func coordinateSpanWithCenterCoordinate(_ centerCoordinate:CLLocationCoordinate2D, zoomLevel:Double)->MKCoordinateSpan{
