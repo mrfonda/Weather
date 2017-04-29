@@ -8,8 +8,6 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
-
 class AutocompletionResponce :  Mappable{
     var results = [City]()
     

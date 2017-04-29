@@ -27,7 +27,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     
     
     func clearButtonTapped() {
-        let alert = UIAlertController(title: "Wait a sec", message: "Are you really going to delete all your locations?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Wait a sec", message: "Are you shure you want to delete all your locations?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {action in
@@ -60,7 +60,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
         navigationItem.setLeftBarButtonItems([navigationItem.leftBarButtonItem!], animated: true)
         
     }
-    @IBAction func editButtonTapped() {
+    func editButtonTapped() {
         if tableView.isEditing {
             resetEditing()
         } else {
@@ -129,13 +129,20 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
         }
         
         // Create second button
-        let buttonPay = DefaultButton(title: "Add") {
-            popup.dismiss(animated: true)
-        }
+        let buttonAdd = DefaultButton(title: "Add") {
+            if let city = viewController.selectedCity {
+                try! self.realm.write {
+                    self.realm.add(city)
+                    self.tableView.reloadData()
+                }
+                popup.dismiss(animated: true)
+            }
             
-        buttonPay.dismissOnTap = false
+        }
+        
+        buttonAdd.dismissOnTap = false
         // Add buttons to dialog
-        popup.addButtons([buttonCancel, buttonPay])
+        popup.addButtons([buttonCancel, buttonAdd])
         self.present(popup, animated: true, completion: nil)
             
     }
@@ -195,9 +202,11 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         navigationItem.leftBarButtonItem?.isEnabled = true
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "city", for: indexPath)
-        cell.textLabel?.text = cities[indexPath.row].name
         // Configure the cell...
+        cell.textLabel?.text = cities[indexPath.row].name
+        
         return cell
     }
     

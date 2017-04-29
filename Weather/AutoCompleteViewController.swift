@@ -13,6 +13,7 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var autoCompleteTextfield: AutoCompleteTextField!
+    
     fileprivate var predictions : [City] = [] {
         didSet {
             if predictions.isEmpty {
@@ -27,6 +28,7 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    public var selectedCity : City?
     
     fileprivate var selectedPointAnnotation:MKPointAnnotation?
     
@@ -54,17 +56,16 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
     fileprivate func handleTextFieldInterfaces(){
         autoCompleteTextfield.onTextChange = {[weak self] text in
             if !text.isEmpty{
-//                if let dataTask = self?.dataTask {
-//                    dataTask.cancel()
-//                }
                 self?.fetchAutocompletePlaces(text)
             }
+            self?.selectedCity = nil
         }
         
         autoCompleteTextfield.onSelect = {[weak self] text, indexpath in
             let coordinate = CLLocationCoordinate2D(latitude: Double((self?.predictions[indexpath.row].lat)!)!, longitude: Double((self?.predictions[indexpath.row].lon)!)!)
             self?.addAnnotation(coordinate, address: text)
             self?.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+            self?.selectedCity = self?.predictions[indexpath.row]
         }
     }
     

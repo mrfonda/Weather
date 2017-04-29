@@ -13,7 +13,7 @@
         <!--Download-->
         <scene sceneID="7EA-tQ-sJ1">
             <objects>
-                <viewController title="Download" id="kHk-7b-jXC" sceneMemberID="viewController">
+                <viewController title="Download" id="kHk-7b-jXC" customClass="DownloadsViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xdu-iC-u5G"/>
                         <viewControllerLayoutGuide type="bottom" id="Jgo-Fo-Dsh"/>
@@ -22,17 +22,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEF-OI-Qgm">
-                                <rect key="frame" x="152" y="186" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="L3r-s8-QKx">
-                                <rect key="frame" x="112" y="96" width="150" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dts-bc-NVM">
+                                <rect key="frame" x="16" y="84" width="343" height="52"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L3r-s8-QKx">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="2"/>
+                                    </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEF-OI-Qgm">
+                                        <rect key="frame" x="0.0" y="22" width="343" height="30"/>
+                                        <state key="normal" title="Download"/>
+                                        <connections>
+                                            <action selector="editButtonTapped" destination="kHk-7b-jXC" eventType="touchUpInside" id="19a-gU-QNe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="dts-bc-NVM" secondAttribute="trailing" id="Gf3-S0-mgX"/>
+                            <constraint firstItem="dts-bc-NVM" firstAttribute="leading" secondItem="aya-Zs-siW" secondAttribute="leadingMargin" id="Zlq-w5-Iif"/>
+                            <constraint firstItem="dts-bc-NVM" firstAttribute="top" secondItem="Xdu-iC-u5G" secondAttribute="bottom" constant="20" id="nOC-Zc-6oU"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Download" id="hVz-F9-hur"/>
                     <navigationItem key="navigationItem" title="Download" id="d7X-hu-cx8"/>
@@ -214,7 +225,7 @@
         <scene sceneID="OFy-MH-1bY">
             <objects>
                 <navigationController title="Download" id="8k9-nf-L0u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Download" id="8bI-VJ-8GI"/>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="8bI-VJ-8GI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fko-Ok-vbQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
