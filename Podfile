@@ -10,6 +10,7 @@ pod 'Alamofire'
 pod 'AlamofireObjectMapper', '~> 4.0'
 pod 'PopupDialog', '~> 0.5'
 pod 'KeychainSwift', '~> 8.0'
+pod 'DateToolsSwift'
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|

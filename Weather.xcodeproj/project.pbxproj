@@ -28,7 +28,12 @@
 		7639DFE31EB4FBFA001F566D /* AutocompletionResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFE21EB4FBFA001F566D /* AutocompletionResponce.swift */; };
 		7639DFE51EB509F8001F566D /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFE41EB509F8001F566D /* ForecastResponse.swift */; };
 		7639DFE81EB5131E001F566D /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFE71EB5131E001F566D /* DownloadsViewController.swift */; };
+		76A828DE1EB5546200E40182 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A828DD1EB5546200E40182 /* DayCollectionViewCell.swift */; };
+		76A828E11EB56AF200E40182 /* Transforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A828E01EB56AF200E40182 /* Transforms.swift */; };
+		76A828E31EB576C100E40182 /* ObservationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A828E21EB576C100E40182 /* ObservationResponse.swift */; };
+		76A828E51EB576D800E40182 /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A828E41EB576D800E40182 /* Observation.swift */; };
 		76B409471EB542620045D980 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B409461EB542620045D980 /* SettingsViewController.swift */; };
+		76E3498A1EB54CBF00C5FFDD /* ForecastCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E349891EB54CBF00C5FFDD /* ForecastCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +82,12 @@
 		7639DFE21EB4FBFA001F566D /* AutocompletionResponce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompletionResponce.swift; sourceTree = "<group>"; };
 		7639DFE41EB509F8001F566D /* ForecastResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		7639DFE71EB5131E001F566D /* DownloadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		76A828DD1EB5546200E40182 /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
+		76A828E01EB56AF200E40182 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
+		76A828E21EB576C100E40182 /* ObservationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationResponse.swift; sourceTree = "<group>"; };
+		76A828E41EB576D800E40182 /* Observation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
 		76B409461EB542620045D980 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		76E349891EB54CBF00C5FFDD /* ForecastCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewController.swift; sourceTree = "<group>"; };
 		E6BDF8B913E7C7F3C8547557 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +185,8 @@
 				7639DFC01EB3EDFD001F566D /* DayWeather.swift */,
 				7639DFE21EB4FBFA001F566D /* AutocompletionResponce.swift */,
 				7639DFE41EB509F8001F566D /* ForecastResponse.swift */,
+				76A828E21EB576C100E40182 /* ObservationResponse.swift */,
+				76A828E41EB576D800E40182 /* Observation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -183,10 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				7639DFC51EB418A2001F566D /* CustomAlertDialogViewController */,
-				7639DFE61EB512A7001F566D /* CitiesTab */,
-				7639DFB51EB3DA91001F566D /* Main.storyboard */,
+				7639DFE61EB512A7001F566D /* Main */,
 				7639DFB71EB3DA91001F566D /* LaunchScreen.storyboard */,
-				7639DFE71EB5131E001F566D /* DownloadsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +215,7 @@
 		7639DFCC1EB4A8D2001F566D /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				76A828DF1EB56ADD00E40182 /* ObjectMapper */,
 				7639DFD01EB4A973001F566D /* AutoCompleteTextField */,
 				7639DFE01EB4D34A001F566D /* API.swift */,
 			);
@@ -246,13 +257,25 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		7639DFE61EB512A7001F566D /* CitiesTab */ = {
+		7639DFE61EB512A7001F566D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7639DFB51EB3DA91001F566D /* Main.storyboard */,
 				7639DFC21EB40775001F566D /* CitiesTableViewController.swift */,
 				76B409461EB542620045D980 /* SettingsViewController.swift */,
+				76E349891EB54CBF00C5FFDD /* ForecastCollectionViewController.swift */,
+				76A828DD1EB5546200E40182 /* DayCollectionViewCell.swift */,
+				7639DFE71EB5131E001F566D /* DownloadsViewController.swift */,
 			);
-			name = CitiesTab;
+			name = Main;
+			sourceTree = "<group>";
+		};
+		76A828DF1EB56ADD00E40182 /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				76A828E01EB56AF200E40182 /* Transforms.swift */,
+			);
+			name = ObjectMapper;
 			sourceTree = "<group>";
 		};
 		E75CCCC04256C38AB6DE586E /* Frameworks */ = {
@@ -463,8 +486,13 @@
 				7639DFE31EB4FBFA001F566D /* AutocompletionResponce.swift in Sources */,
 				7639DFDC1EB4C0E4001F566D /* MKMapViewExtension.swift in Sources */,
 				76B409471EB542620045D980 /* SettingsViewController.swift in Sources */,
+				76A828E11EB56AF200E40182 /* Transforms.swift in Sources */,
 				7639DFC11EB3EDFD001F566D /* DayWeather.swift in Sources */,
+				76A828E31EB576C100E40182 /* ObservationResponse.swift in Sources */,
+				76E3498A1EB54CBF00C5FFDD /* ForecastCollectionViewController.swift in Sources */,
+				76A828DE1EB5546200E40182 /* DayCollectionViewCell.swift in Sources */,
 				7639DFE81EB5131E001F566D /* DownloadsViewController.swift in Sources */,
+				76A828E51EB576D800E40182 /* Observation.swift in Sources */,
 				7639DFC81EB41916001F566D /* CustomAlertDialogViewCongroller.swift in Sources */,
 				7639DFB11EB3DA88001F566D /* Config.swift in Sources */,
 				7639DFBF1EB3E3FE001F566D /* City.swift in Sources */,

@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DateToolsSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,6 +52,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0C1EDE11085A3DF5324278B208688E2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
 		<dict>
 			<key>primary</key>
@@ -57,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6863C9B488F8AB5BDB44ABADD51A2FE0</key>
+		<key>3BFFD2D90D6478F67768A58043852317</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>84BB3966FF8F841D60CBCC78B86EBDBC</key>
+		<key>7EB5805FC273B3A5557BC7ABEDED864B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD36EF9AD57D656EB2D430EE1483EF10</key>
+		<key>E89CFD99B895BCC6E8EDC2F95A03500C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C49D83D31AD6A7E3EB82C9B4D4E56BB4</key>
+		<key>F95CF85BF8331E57F8528D5D7C1D464A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

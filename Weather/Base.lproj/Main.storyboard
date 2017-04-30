@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -97,25 +98,71 @@
         <!--Forecast-->
         <scene sceneID="Kf7-fz-d9J">
             <objects>
-                <collectionViewController title="Forecast" hidesBottomBarWhenPushed="YES" id="6fG-0d-R1w" sceneMemberID="viewController">
+                <collectionViewController title="Forecast" hidesBottomBarWhenPushed="YES" id="6fG-0d-R1w" customClass="ForecastCollectionViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="byT-Mh-QR9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0rD-xC-bX3">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FHN-r2-zkY">
+                            <size key="itemSize" width="210" height="284"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="day" id="vjK-ny-Oj3">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="dayWeather" reuseIdentifier="dayWeather" id="KBf-Ky-JYY" customClass="DayCollectionViewCell" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="82.5" y="0.0" width="210" height="284"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="210" height="284"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fiX-2D-GGz">
+                                            <rect key="frame" x="-12" y="8" width="163" height="181"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mai-xP-n0b">
+                                                    <rect key="frame" x="82" y="0.0" width="30" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zj0-Ld-sNl">
+                                                    <rect key="frame" x="3" y="28" width="188" height="188"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Zj0-Ld-sNl" secondAttribute="height" multiplier="1:1" id="4nd-k9-T0m"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="8/12/2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7t-hg-3L7">
+                                                    <rect key="frame" x="66.5" y="226" width="61" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="An excerpt..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWD-05-Bhr">
+                                                    <rect key="frame" x="22" y="252" width="150" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="gIb-Ti-HEG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="fiX-2D-GGz" firstAttribute="leading" secondItem="KBf-Ky-JYY" secondAttribute="leadingMargin" id="6OB-4O-ubb"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="fiX-2D-GGz" secondAttribute="bottom" id="86X-Zr-gXm"/>
+                                    <constraint firstAttribute="topMargin" secondItem="fiX-2D-GGz" secondAttribute="top" id="HBN-Df-lkP"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="fiX-2D-GGz" secondAttribute="trailing" id="l4S-4C-3zb"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="date" destination="C7t-hg-3L7" id="U8w-F0-UKl"/>
+                                    <outlet property="forecastText" destination="sWD-05-Bhr" id="p5k-eF-NEM"/>
+                                    <outlet property="icon" destination="Zj0-Ld-sNl" id="dFf-te-ILr"/>
+                                    <outlet property="title" destination="mai-xP-n0b" id="TNf-aW-MlE"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -126,7 +173,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Slx-Mr-ma3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1431" y="-1164"/>
+            <point key="canvasLocation" x="1429.5999999999999" y="-1164.4677661169417"/>
         </scene>
         <!--Cities-->
         <scene sceneID="j2Z-fe-cU1">
@@ -169,12 +216,12 @@
         <scene sceneID="k32-LR-sGu">
             <objects>
                 <tableViewController title="Settings" id="ANc-iG-rad" customClass="SettingsViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mkx-6g-t7k">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mkx-6g-t7k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Prognosis" id="Frf-UU-r4g">
+                            <tableViewSection headerTitle="Forecast" id="Frf-UU-r4g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="daysInForecast" id="tre-0T-MGS">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -196,7 +243,7 @@
                                                             <rect key="frame" x="179.5" y="0.0" width="179.5" height="27.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -219,6 +266,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="XUt-Kg-80N"/>
                     <navigationItem key="navigationItem" title="Settings" id="NER-jQ-bxz"/>
+                    <connections>
+                        <outlet property="daysInForecast" destination="rdC-00-Cmx" id="u7b-Hm-dMr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3K-Ie-vxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

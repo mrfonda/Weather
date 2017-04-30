@@ -12,7 +12,7 @@ import KeychainSwift
 struct Config {
     
     static let googleAPIKey = "AIzaSyCVGsWOZYPWfvGONDgV6hJZijXJQ-Ck9NM"
-    static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    static let dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxxxx"
     static let autocompleteURLString = "http://autocomplete.wunderground.com/aq"
     static let autocompleteURL = NSURL(string: autocompleteURLString)!
     

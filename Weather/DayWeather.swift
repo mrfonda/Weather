@@ -32,7 +32,7 @@ class DayWeather : Object, Mappable {
     
     func mapping(map: Map) {
  
-        validTime <- map["validTime"]
+        validTime <- (map["validTime"], DateTransform())
         weatherPrimary <- map["weatherPrimary"]
         icon <- map["icon"]
         maxTempC <- map["maxTempC"]

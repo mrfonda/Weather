@@ -24,50 +24,6 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
         }
     }
     
-    
-    
-    func clearButtonTapped() {
-        let alert = UIAlertController(title: "Wait a sec", message: "Are you shure you want to delete all your locations?", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {action in
-            try! self.realm.write {
-                self.realm.delete(self.realm.objects(City.self))
-                self.resetEditing()
-                self.tableView.reloadData()
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    private func setEditing() {
-        if !cities.isEmpty {
-            tableView.setEditing(true, animated: true)
-            navigationItem.leftBarButtonItem?.style = .done
-            navigationItem.leftBarButtonItem?.title = "Done"
-            let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearButtonTapped))
-            clearButton.tintColor = UIColor.red
-            navigationItem.setLeftBarButtonItems([navigationItem.leftBarButtonItem!, clearButton], animated: true)
-            clearButton.isEnabled = true
-        }
-    }
-    private func resetEditing() {
-        tableView.setEditing(false, animated: true)
-        navigationItem.leftBarButtonItem?.style = .plain
-        navigationItem.leftBarButtonItem?.title = "Edit"
-        navigationItem.leftBarButtonItem?.isEnabled = !cities.isEmpty
-        navigationItem.setLeftBarButtonItems([navigationItem.leftBarButtonItem!], animated: true)
-        
-    }
-    func editButtonTapped() {
-        if tableView.isEditing {
-            resetEditing()
-        } else {
-            setEditing()
-        }
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations)
         
@@ -117,8 +73,6 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     
     @IBAction func addCity(_ sender: UIBarButtonItem) {
         
-        
-        
         let viewController = AutoCompleteViewController(nibName: "AutoCompleteViewController", bundle: nil)
         //self.storyboard.instantiateViewController(withIdentifier: "someViewController")
         
@@ -137,7 +91,6 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
                 }
                 popup.dismiss(animated: true)
             }
-            
         }
         
         buttonAdd.dismissOnTap = false
@@ -155,27 +108,11 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
-        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
-        navigationItem.leftBarButtonItem = editButton
         tableView.tableFooterView = UIView()
         
-       
-//            var shiftInPresentation = JellyShiftInPresentation()
-//            shiftInPresentation.direction = .left
-//            let animator = JellyAnnimator(presentation:presentation)
-//            self.jellyAnimator = animator
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Table view data source
     
@@ -195,7 +132,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
                 realm.delete(cityToDelete)
             }
             if cities.isEmpty {
-                self.resetEditing()
+                self.navigationItem.leftBarButtonItem?.isEnabled = false
             }
         }
     }
@@ -237,16 +174,14 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if let id = segue.identifier {
             switch  id {
             case "citiesToForecast":
-                if let dvc = segue.destination as? UIViewController {
+                if let dvc = segue.destination as? ForecastCollectionViewController {
                     dvc.title = (sender as! City).name
+                    dvc.city = sender as? City
                 }
             default:
                 break
