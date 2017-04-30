@@ -18,8 +18,6 @@
 		7639DFBF1EB3E3FE001F566D /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFBE1EB3E3FE001F566D /* City.swift */; };
 		7639DFC11EB3EDFD001F566D /* DayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFC01EB3EDFD001F566D /* DayWeather.swift */; };
 		7639DFC31EB40775001F566D /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFC21EB40775001F566D /* CitiesTableViewController.swift */; };
-		7639DFC81EB41916001F566D /* CustomAlertDialogViewCongroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFC61EB41916001F566D /* CustomAlertDialogViewCongroller.swift */; };
-		7639DFC91EB41916001F566D /* CustomAlertDialogViewCongroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFC71EB41916001F566D /* CustomAlertDialogViewCongroller.xib */; };
 		7639DFD21EB4A9A8001F566D /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFD11EB4A9A8001F566D /* AutoCompleteTextField.swift */; };
 		7639DFD71EB4AAD6001F566D /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFD51EB4AAD6001F566D /* AutoCompleteViewController.swift */; };
 		7639DFD81EB4AAD6001F566D /* AutoCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFD61EB4AAD6001F566D /* AutoCompleteViewController.xib */; };
@@ -72,8 +70,6 @@
 		7639DFBE1EB3E3FE001F566D /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		7639DFC01EB3EDFD001F566D /* DayWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeather.swift; sourceTree = "<group>"; };
 		7639DFC21EB40775001F566D /* CitiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
-		7639DFC61EB41916001F566D /* CustomAlertDialogViewCongroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertDialogViewCongroller.swift; sourceTree = "<group>"; };
-		7639DFC71EB41916001F566D /* CustomAlertDialogViewCongroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertDialogViewCongroller.xib; sourceTree = "<group>"; };
 		7639DFD11EB4A9A8001F566D /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		7639DFD51EB4AAD6001F566D /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
 		7639DFD61EB4AAD6001F566D /* AutoCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoCompleteViewController.xib; sourceTree = "<group>"; };
@@ -204,8 +200,6 @@
 		7639DFC51EB418A2001F566D /* CustomAlertDialogViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7639DFC61EB41916001F566D /* CustomAlertDialogViewCongroller.swift */,
-				7639DFC71EB41916001F566D /* CustomAlertDialogViewCongroller.xib */,
 				7639DFD51EB4AAD6001F566D /* AutoCompleteViewController.swift */,
 				7639DFD61EB4AAD6001F566D /* AutoCompleteViewController.xib */,
 			);
@@ -402,7 +396,6 @@
 			files = (
 				7639DFBB1EB3E383001F566D /* Main.storyboard in Resources */,
 				7639DFD81EB4AAD6001F566D /* AutoCompleteViewController.xib in Resources */,
-				7639DFC91EB41916001F566D /* CustomAlertDialogViewCongroller.xib in Resources */,
 				7639DFBC1EB3E383001F566D /* LaunchScreen.storyboard in Resources */,
 				7639DFB01EB3DA88001F566D /* Assets.xcassets in Resources */,
 			);
@@ -493,7 +486,6 @@
 				76A828DE1EB5546200E40182 /* DayCollectionViewCell.swift in Sources */,
 				7639DFE81EB5131E001F566D /* DownloadsViewController.swift in Sources */,
 				76A828E51EB576D800E40182 /* Observation.swift in Sources */,
-				7639DFC81EB41916001F566D /* CustomAlertDialogViewCongroller.swift in Sources */,
 				7639DFB11EB3DA88001F566D /* Config.swift in Sources */,
 				7639DFBF1EB3E3FE001F566D /* City.swift in Sources */,
 			);

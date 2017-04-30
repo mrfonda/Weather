@@ -79,7 +79,7 @@
                             <outlet property="delegate" destination="CcH-e3-api" id="ihI-uU-RDV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Cities" id="W5Z-Gm-BQa"/>
+                    <tabBarItem key="tabBarItem" title="Cities" image="tabCities" id="W5Z-Gm-BQa"/>
                     <navigationItem key="navigationItem" title="Cities" id="3GT-CK-gqk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6XL-gH-rW6">
                             <connections>
@@ -179,7 +179,7 @@
         <scene sceneID="j2Z-fe-cU1">
             <objects>
                 <navigationController title="Cities" id="O3s-4Q-pqU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cities" id="vNa-hM-p1r"/>
+                    <tabBarItem key="tabBarItem" title="Cities" image="tabCities" id="vNa-hM-p1r"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u0p-HW-7Sd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -264,7 +264,7 @@
                             <outlet property="delegate" destination="ANc-iG-rad" id="mCc-uX-7eA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="XUt-Kg-80N"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="tabSettings" id="XUt-Kg-80N"/>
                     <navigationItem key="navigationItem" title="Settings" id="NER-jQ-bxz"/>
                     <connections>
                         <outlet property="daysInForecast" destination="rdC-00-Cmx" id="u7b-Hm-dMr"/>
@@ -295,7 +295,7 @@
         <scene sceneID="81G-aG-zWb">
             <objects>
                 <navigationController title="Settitngs" id="mwx-3u-Fxl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="jXh-fZ-7HK"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="tabSettings" id="jXh-fZ-7HK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="deT-d6-bZK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -309,4 +309,8 @@
             <point key="canvasLocation" x="-394" y="414"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabCities" width="16" height="16"/>
+        <image name="tabSettings" width="16" height="16"/>
+    </resources>
 </document>

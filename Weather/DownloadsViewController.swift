@@ -26,6 +26,7 @@ class DownloadsViewController: UIViewController {
     
     
     @IBAction func downloadButtonTapped(_ sender: UIButton) {
+        
         downloadingProgressView.progress = 0.0
         fetchForecast(cities: Array(cities))
         sender.isEnabled = false
@@ -50,10 +51,15 @@ class DownloadsViewController: UIViewController {
             finishedDownload()
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        downloadButton.isEnabled = !cities.isEmpty
     }
 
 }

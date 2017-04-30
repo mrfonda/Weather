@@ -56,14 +56,20 @@ class API: NSObject {
             switch self {
             case .autocomplete(let query):
                 return ["query" : query]
-                case .forecast(let latitude, let longitude), .observation(let latitude, let longitude):
+                case .forecast(let latitude, let longitude):
                 return [
                     "client_id" : Config.aeris_client_id,
                     "client_secret" : Config.aeris_client_secret,
                     "p" : "\(latitude),\(longitude)",
                     "limit" : Config.daysInForecast
                 ]
-
+            case  .observation(let latitude, let longitude):
+                return [
+                    "client_id" : Config.aeris_client_id,
+                    "client_secret" : Config.aeris_client_secret,
+                    "p" : "\(latitude),\(longitude)",
+                    "limit" : 1
+                ]
             default: return nil
                 
             }
