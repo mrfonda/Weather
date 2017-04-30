@@ -12,7 +12,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        daysInForecast.text = Config.daysInForecastDefault
+        daysInForecast.text = Config.daysInForecast
         daysInForecast.delegate = self
     }
     @IBOutlet weak var daysInForecast: UITextField!

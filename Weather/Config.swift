@@ -11,18 +11,14 @@ import RealmSwift
 import KeychainSwift
 struct Config {
     
-    static let googleAPIKey = "AIzaSyCVGsWOZYPWfvGONDgV6hJZijXJQ-Ck9NM"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxxxx"
-    static let autocompleteURLString = "http://autocomplete.wunderground.com/aq"
-    static let autocompleteURL = NSURL(string: autocompleteURLString)!
     
-
-
+    static let autocompleteURLString = "http://autocomplete.wunderground.com/aq"
     
     static let forecastURLString = "https://api.aerisapi.com//forecasts/"
-    static let forecastURL = NSURL(string: forecastURLString)!
-    static let forecast_client_id = "78fKKT6trlh0XmOnWkY7A"
-    static let forecast_client_secret = "Ttk2Emd7tfVdvwqyh8uJZwWf3p8JrVjKCG8Ubumo"
+    static let observationURLString = "https://api.aerisapi.com//observations/"
+    static let aeris_client_id = "78fKKT6trlh0XmOnWkY7A"
+    static let aeris_client_secret = "Ttk2Emd7tfVdvwqyh8uJZwWf3p8JrVjKCG8Ubumo"
 
    
     static let daysInForecastDefault = "5"

@@ -24,7 +24,7 @@ class API: NSObject {
         
         case autocomplete(query : String)
         case forecast(latitude : String, longitude : String)
-       
+        case observation(latitude : String, longitude : String)
         //Defining parameters of URL Request for each API case
         //method parameter
         var method: HTTPMethod {
@@ -39,6 +39,8 @@ class API: NSObject {
                 return Config.autocompleteURLString
             case .forecast:
                 return Config.forecastURLString
+            case .observation:
+                return Config.observationURLString
             }
             
         }
@@ -54,10 +56,10 @@ class API: NSObject {
             switch self {
             case .autocomplete(let query):
                 return ["query" : query]
-                case .forecast(let latitude, let longitude):
+                case .forecast(let latitude, let longitude), .observation(let latitude, let longitude):
                 return [
-                    "client_id" : Config.forecast_client_id,
-                    "client_secret" : Config.forecast_client_secret,
+                    "client_id" : Config.aeris_client_id,
+                    "client_secret" : Config.aeris_client_secret,
                     "p" : "\(latitude),\(longitude)",
                     "limit" : Config.daysInForecast
                 ]
@@ -71,13 +73,7 @@ class API: NSObject {
          // MARK: URLRequestConvertible
         func asURLRequest() throws -> URLRequest {      
             //Completing URL and URL suffixes
-//            var urlString = ""
-//            switch self {
-//            case .autocomplete:
-//                 urlString = Config.autocompleteURLString
-//            case .forecast:
-//                urlString = Config.forecastURLString
-//            }
+            //Simple version with full path
             let url = try path.asURL()
             var urlRequest = URLRequest(url: url)
             
@@ -86,13 +82,8 @@ class API: NSObject {
             
             urlRequest.allHTTPHeaderFields = headers
             
-            
-            switch self {
-            case .autocomplete, .forecast:
-                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: parameters)
-            default:
-                break
-            }
+            urlRequest = try URLEncoding.queryString.encode(urlRequest, with: parameters)
+
             print(urlRequest)
             return urlRequest
         }
@@ -135,6 +126,21 @@ class API: NSObject {
                         
                         success()
                     }
+                case .failure(let error) :
+                    fail(error as NSError)
+                }
+                
+        }
+    }
+    static func fetchObservationData(city: City, success:@escaping (Observation) -> Void, fail:@escaping (_ error:NSError)->Void)->Void {
+        API.manager.request(Router.observation(latitude: city.lat, longitude: city.lon))
+            .responseObject { (response : DataResponse<ObservationResponse>)  in
+                
+                switch response.result {
+                case .success(let observationResponse):
+                    if observationResponse.success {
+                        success(observationResponse.response.ob)
+                    } else {fail(NSError())}
                 case .failure(let error) :
                     fail(error as NSError)
                 }

@@ -9,11 +9,9 @@
 import Foundation
 
 import ObjectMapper
-import RealmSwift
-
 class ObservationResponse :  Mappable {
     var success = false
-    var response = [ObservationResponseItem]()
+    var response = ObservationResponseItem()
     
     //Impl. of Mappable protocol
     required convenience init?(map: Map) {
@@ -26,7 +24,7 @@ class ObservationResponse :  Mappable {
     }
 }
 class ObservationResponseItem :  Mappable {
-    var ob = [Observation]()
+    var ob = Observation()
     
     required convenience init?(map: Map) {
         self.init()
