@@ -147,10 +147,10 @@
 		7639DF4F1EB218BB001F566D /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				7639DFCD1EB4A8DF001F566D /* Application */,
 				7639DFC41EB41895001F566D /* Controllers */,
-				7639DFCC1EB4A8D2001F566D /* Library */,
 				7639DFBD1EB3E3E1001F566D /* Models */,
+				7639DFCC1EB4A8D2001F566D /* Library */,
+				7639DFCD1EB4A8DF001F566D /* Application */,
 				7639DFCE1EB4A8E7001F566D /* Resourses */,
 			);
 			path = Weather;

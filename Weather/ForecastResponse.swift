@@ -8,31 +8,30 @@
 
 import Foundation
 import ObjectMapper
-import RealmSwift
 
 class ForecastResponce :  Mappable {
-    var success = false
-    var response = [Response]()
-    
-    //Impl. of Mappable protocol
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        success <- map["success"]
-        response <- map["response"]
-    }
+  var success = false
+  var response = [Response]()
+  
+  //Impl. of Mappable protocol
+  required convenience init?(map: Map) {
+    self.init()
+  }
+  
+  func mapping(map: Map) {
+    success <- map["success"]
+    response <- map["response"]
+  }
 }
 class Response :  Mappable {
-    var periods = [DayWeather]()
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        periods <- map["periods"]
-    }
+  var periods = [DayWeather]()
+  
+  required convenience init?(map: Map) {
+    self.init()
+  }
+  
+  func mapping(map: Map) {
+    periods <- map["periods"]
+  }
 }
 

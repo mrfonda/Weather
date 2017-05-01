@@ -20,10 +20,7 @@ class DayWeather : Object, Mappable {
     dynamic var minTempF = 0
     dynamic var avgTempC = 0
     dynamic var avgTempF = 0
-    
-//    override static func primaryKey() -> String? {
-//        return "validTime"
-//    }
+  
     
     //Impl. of Mappable protocol
     required convenience init?(map: Map) {

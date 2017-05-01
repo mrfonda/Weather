@@ -8,15 +8,16 @@
 
 import Foundation
 import ObjectMapper
+
 class AutocompletionResponce :  Mappable{
-    var results = [City]()
-    
-    //Impl. of Mappable protocol
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        results <- map["RESULTS"]
-    }
+  var results = [City]()
+  
+  //Impl. of Mappable protocol
+  required convenience init?(map: Map) {
+    self.init()
+  }
+  
+  func mapping(map: Map) {
+    results <- map["RESULTS"]
+  }
 }

@@ -9,9 +9,9 @@
 import UIKit
 
 class DayCollectionViewCell: UICollectionViewCell {
-   
+  
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var temparatures: UILabel!
     @IBOutlet weak var forecastText: UILabel!
 }
