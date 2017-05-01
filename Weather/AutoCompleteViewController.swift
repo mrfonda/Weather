@@ -43,7 +43,9 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
     configureTextField()
     handleTextFieldInterfaces()
   }
-  
+  deinit {
+    print("😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀")
+  }
   // MARK: - Interface preparations
   
   fileprivate func configureTextField(){
@@ -63,14 +65,14 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   
   
   fileprivate func handleTextFieldInterfaces(){
-    autoCompleteTextfield.onTextChange = {[weak self] text in
+    autoCompleteTextfield.onTextChange = { [weak self] text in
       if !text.isEmpty{
         self?.fetchAutocompletePlaces(text)
       }
       self?.selectedCity = nil
     }
     
-    autoCompleteTextfield.onSelect = {[weak self] text, indexpath in
+    autoCompleteTextfield.onSelect = { [weak self] text, indexpath in
       let coordinate = CLLocationCoordinate2D(latitude: Double((self?.predictions[indexpath.row].lat)!)!, longitude: Double((self?.predictions[indexpath.row].lon)!)!)
       self?.addAnnotation(coordinate, address: text)
       self?.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
@@ -81,7 +83,7 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   //MARK: - Private Methods
   
   fileprivate func addAnnotation(_ coordinate:CLLocationCoordinate2D, address:String?){
-    if let annotation = selectedPointAnnotation{
+    if let annotation = selectedPointAnnotation {
       mapView.removeAnnotation(annotation)
     }
     
@@ -92,11 +94,11 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   }
   
   fileprivate func fetchAutocompletePlaces(_ keyword:String) {
-    API.fetchAutocompletePredictions(query: keyword, success: { (predictions) in
-      self.predictions = predictions
-    }) { (error) in
-      self.predictions = []
-    }
+    API.fetchAutocompletePredictions(query: keyword, success: { [weak self] (predictions) in
+      self?.predictions = predictions
+      }, fail: { [weak self] (error) in
+        self?.predictions = []
+    })
   }
   
   // MARK: - TextField delegate methods
@@ -108,6 +110,6 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   }
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     autoCompleteTextfield.resignFirstResponder()
-    self.view.endEditing(true)
+    view.endEditing(true)
   }
 }
