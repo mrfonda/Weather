@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AutoCompleteViewController" customModule="Weather" customModuleProvider="target">
             <connections>
                 <outlet property="autoCompleteTextfield" destination="vO8-at-aRa" id="5Aw-bd-MPP"/>
-                <outlet property="mapView" destination="58V-kh-wwz" id="85i-4k-bhZ"/>
+                <outlet property="mapView" destination="UbR-3k-YFw" id="oMS-HF-Bgb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,17 +33,18 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type the city here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vO8-at-aRa" customClass="AutoCompleteTextField" customModule="Weather" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="40" width="200" height="30"/>
+                            <rect key="frame" x="0.0" y="40" width="200" height="34"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                         </textField>
-                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="58V-kh-wwz">
-                            <rect key="frame" x="0.0" y="70" width="200" height="132"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-3k-YFw" customClass="GMSMapView">
+                            <rect key="frame" x="0.0" y="74" width="200" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="132" id="Ynn-n4-T2m"/>
+                                <constraint firstAttribute="height" constant="128" id="bSs-aH-wrf"/>
                             </constraints>
-                        </mapView>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>

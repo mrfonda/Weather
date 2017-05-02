@@ -15,9 +15,9 @@ open class AutoCompleteTextField:UITextField {
     /// Holds the collection of attributed strings
     fileprivate lazy var attributedAutoCompleteStrings = [NSAttributedString]()
     /// Handles user selection action on autocomplete table view
-    open var onSelect:(String, IndexPath)->() = {_,_ in}
+    open var onSelect:((String, IndexPath)->())? = {_,_ in}
     /// Handles textfield's textchanged
-    open var onTextChange:(String)->() = {_ in}
+    open var onTextChange:((String)->())? = {_ in}
     
     /// Font for the text suggestions
     open var autoCompleteTextFont = UIFont.systemFont(ofSize: 12)
@@ -137,7 +137,7 @@ open class AutoCompleteTextField:UITextField {
             return
         }
         
-        onTextChange(text!)
+        onTextChange?(text!)
         if text!.isEmpty{ autoCompleteStrings = nil }
         DispatchQueue.main.async(execute: { () -> Void in
             self.autoCompleteTableView?.isHidden =  self.hidesWhenEmpty! ? self.text!.isEmpty : false
@@ -181,7 +181,7 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
         
         if let selectedText = cell?.textLabel?.text {
             self.text = selectedText
-            onSelect(selectedText, indexPath)
+            onSelect?(selectedText, indexPath)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in

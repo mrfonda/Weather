@@ -17,7 +17,11 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
   // MARK: - ViewController's variable declarations
   
   let realm = try! Realm()
-  let locationManager = CLLocationManager()
+  lazy var locationManager: CLLocationManager = self.makeLocationManager()
+  
+  var autocompletionVC: AutoCompleteViewController?
+  
+  var popupVC: PopupDialog?
   
   var cities: Results<City> {
     get {
@@ -27,6 +31,14 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     }
   }
   
+  private func makeLocationManager() -> CLLocationManager {
+    let manager = CLLocationManager()
+    manager.delegate = self
+    manager.desiredAccuracy = kCLLocationAccuracyBest
+    manager.requestWhenInUseAuthorization()
+    return manager
+  }
+  
   // MARK: - ViewController's life cycle
   
   override func viewDidLoad() {
@@ -34,9 +46,6 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     
     //Ask for current location
     if cities.isEmpty {
-      locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.requestWhenInUseAuthorization()
       locationManager.startUpdatingLocation()
     }
     tableView.tableFooterView = UIView()
@@ -57,26 +66,31 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
   // MARK: - User Interaction
   
   @IBAction func addCity(_ sender: UIBarButtonItem) {
+    autocompletionVC = AutoCompleteViewController(nibName: "AutoCompleteViewController", bundle: nil)
     
-    let viewController = AutoCompleteViewController(nibName: "AutoCompleteViewController", bundle: nil)
-    
-    let popup = PopupDialog(viewController: viewController, buttonAlignment: .horizontal, transitionStyle: .bounceUp, gestureDismissal: true)
+    popupVC = PopupDialog(viewController: self.autocompletionVC!, buttonAlignment: .horizontal, transitionStyle: .bounceUp, gestureDismissal: false)
     
     let buttonCancel = CancelButton(title: "Cancel") {
+      self.autocompletionVC = nil
+      self.popupVC = nil
     }
     
     let buttonAdd = DefaultButton(title: "Add") {
-      if let city = viewController.selectedCity {
-        self.addCity(city: city)
-        popup.dismiss(animated: true)
+
+      if let city = self.autocompletionVC?.selectedCity {
+        self.addNewCity(city: city)
+        self.popupVC?.dismiss()
+        self.autocompletionVC = nil
+        self.popupVC = nil
       }
+
     }
     
     buttonAdd.dismissOnTap = false
     
-    popup.addButtons([buttonCancel, buttonAdd])
+    popupVC?.addButtons([buttonCancel, buttonAdd])
     
-    self.present(popup, animated: true, completion: nil)
+    self.present(popupVC!, animated: true, completion: nil)
   }
   
   fileprivate func askForCurrentLocation(locations : [CLLocation]) {
@@ -109,7 +123,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
           city.lat = String(lat)
           city.lon = String(lon)
           
-          self?.addCity(city: city)
+          self?.addNewCity(city: city)
           
         }))
         self?.present(alert, animated: true, completion: nil)
@@ -123,9 +137,9 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
   
   // MARK: - Database operations
   
-  private func addCity(city: City) {
+  fileprivate func addNewCity(city: City) {
     try! realm.write {
-      realm.add(city)
+      realm.add(city, update: true)
       tableView.reloadData()
     }
   }
@@ -173,7 +187,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     }
   }
   
-  
+
   // MARK: - Navigation
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -190,3 +204,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     }
   }
 }
+
+// MARK: - Navigation
+
+
