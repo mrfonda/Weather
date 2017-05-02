@@ -71,17 +71,19 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     popupVC = PopupDialog(viewController: self.autocompletionVC!, buttonAlignment: .horizontal, transitionStyle: .bounceUp, gestureDismissal: false)
     
     let buttonCancel = CancelButton(title: "Cancel") {
-      self.popupVC = nil
       self.autocompletionVC = nil
+      self.popupVC = nil
     }
     
     let buttonAdd = DefaultButton(title: "Add") {
+
       if let city = self.autocompletionVC?.selectedCity {
-        self.addCity(city: city)
-        self.popupVC?.dismiss(animated: true)
-        self.popupVC = nil
+        self.addNewCity(city: city)
+        self.popupVC?.dismiss()
         self.autocompletionVC = nil
+        self.popupVC = nil
       }
+
     }
     
     buttonAdd.dismissOnTap = false
@@ -121,7 +123,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
           city.lat = String(lat)
           city.lon = String(lon)
           
-          self?.addCity(city: city)
+          self?.addNewCity(city: city)
           
         }))
         self?.present(alert, animated: true, completion: nil)
@@ -135,9 +137,9 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
   
   // MARK: - Database operations
   
-  private func addCity(city: City) {
+  fileprivate func addNewCity(city: City) {
     try! realm.write {
-      realm.add(city)
+      realm.add(city, update: true)
       tableView.reloadData()
     }
   }
@@ -185,7 +187,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     }
   }
   
-  
+
   // MARK: - Navigation
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -202,3 +204,7 @@ class CitiesTableViewController: UITableViewController, CLLocationManagerDelegat
     }
   }
 }
+
+// MARK: - Navigation
+
+

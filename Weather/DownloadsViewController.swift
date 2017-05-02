@@ -61,7 +61,7 @@ class DownloadsViewController: UIViewController {
           print(error)
           self?.fetchForecast(cities: recCities)
         }, updateProgress: { [weak self] (progress : Float) in
-          self?.downloadingProgressView.setProgressSegmented(segmentNumber: (self?.cities.count)! - cities.count, segmentProgress: progress, numberOfSegments: (self?.cities.count)!)
+             self?.downloadingProgressView.setProgressSegmented(segmentNumber: (self?.cities.count)! - cities.count, segmentProgress: progress, numberOfSegments: (self?.cities.count)!)
       })
     } else {
       finishedDownload()

@@ -4,6 +4,11 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
   - DateToolsSwift (2.0.3)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
   - KeychainSwift (8.0.2)
   - ObjectMapper (2.2.5)
   - PopupDialog (0.5.4)
@@ -17,6 +22,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper (~> 4.0)
   - DateToolsSwift
+  - GoogleMaps
   - KeychainSwift (~> 8.0)
   - PopupDialog (~> 0.5)
   - RealmSwift
@@ -25,12 +31,13 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
   Realm: 21bab65b8a43fe9f4327b3eec4458dd69bc63e3d
   RealmSwift: ee7c93b21e115041fa03b08a89be5451b51826ae
 
-PODFILE CHECKSUM: 4e3e00c83fb8a00a75f4c5c3cf337a27221a8e37
+PODFILE CHECKSUM: d371258dc887d8cc9c45979bdafd1882235f76b2
 
 COCOAPODS: 1.1.1

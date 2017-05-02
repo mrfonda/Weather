@@ -7,15 +7,19 @@
 //
 
 import UIKit
-import MapKit
+import GoogleMaps
 class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   
   // MARK: - ViewController's variable declarations
   
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: GMSMapView!
   
   @IBOutlet weak var autoCompleteTextfield: AutoCompleteTextField!
   
+  
+  var locationManager : CLLocationManager?
+
+  let marker = GMSMarker()
   
   fileprivate var predictions : [City] = [] {
     didSet {
@@ -34,7 +38,7 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   
   public var selectedCity : City?
   
-  fileprivate var selectedPointAnnotation:MKPointAnnotation?
+  fileprivate var selectedPointAnnotation: GMSMarker?
   
   // MARK: - ViewController's life cycle
   
@@ -42,10 +46,17 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     configureTextField()
     handleTextFieldInterfaces()
+    prepareLocationManager()
   }
+  
+  override func viewWillDisappear(_ animated:Bool){
+    super.viewWillDisappear(animated)
+  }
+  
   deinit {
     print("😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀")
   }
+  
   // MARK: - Interface preparations
   
   fileprivate func configureTextField(){
@@ -74,23 +85,35 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
     
     autoCompleteTextfield.onSelect = { [weak self] text, indexpath in
       let coordinate = CLLocationCoordinate2D(latitude: Double((self?.predictions[indexpath.row].lat)!)!, longitude: Double((self?.predictions[indexpath.row].lon)!)!)
-      self?.addAnnotation(coordinate, address: text)
-      self?.mapView.setCenterCoordinate(coordinate, zoomLevel: 12, animated: true)
+      self?.showMarker(coordinate, address: text)
+      self?.mapView.animate(toLocation: coordinate)
+      self?.mapView.animate(toZoom: 12.0)
       self?.selectedCity = self?.predictions[indexpath.row]
-    }
+      }
   }
   
   //MARK: - Private Methods
   
-  fileprivate func addAnnotation(_ coordinate:CLLocationCoordinate2D, address:String?){
-    if let annotation = selectedPointAnnotation {
-      mapView.removeAnnotation(annotation)
+  fileprivate func prepareLocationManager() {
+    locationManager = CLLocationManager()
+    locationManager?.delegate = self
+    locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager?.requestWhenInUseAuthorization()
+    locationManager?.startUpdatingLocation()
+  }
+  
+  fileprivate func showMarker(_ coordinate:CLLocationCoordinate2D, address:String?){
+    marker.position = coordinate
+    marker.title = address
+    if marker.map == nil {
+      marker.map = mapView
     }
-    
-    selectedPointAnnotation = MKPointAnnotation()
-    selectedPointAnnotation!.coordinate = coordinate
-    selectedPointAnnotation!.title = address
-    mapView.addAnnotation(selectedPointAnnotation!)
+  }
+  fileprivate func showCurrentLocation(locations: [CLLocation]) {
+    if !locations.isEmpty {
+    mapView.animate(toLocation: locations[0].coordinate)
+    mapView.animate(toZoom: 12.0)
+    }
   }
   
   fileprivate func fetchAutocompletePlaces(_ keyword:String) {
@@ -111,5 +134,13 @@ class AutoCompleteViewController: UIViewController, UITextFieldDelegate {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     autoCompleteTextfield.resignFirstResponder()
     view.endEditing(true)
+  }
+}
+extension AutoCompleteViewController: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    showCurrentLocation(locations: locations)
+    locationManager?.stopUpdatingLocation()
+    locationManager?.delegate = nil
+    locationManager = nil
   }
 }

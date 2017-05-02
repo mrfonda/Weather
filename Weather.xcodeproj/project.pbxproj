@@ -21,7 +21,6 @@
 		7639DFD21EB4A9A8001F566D /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFD11EB4A9A8001F566D /* AutoCompleteTextField.swift */; };
 		7639DFD71EB4AAD6001F566D /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFD51EB4AAD6001F566D /* AutoCompleteViewController.swift */; };
 		7639DFD81EB4AAD6001F566D /* AutoCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7639DFD61EB4AAD6001F566D /* AutoCompleteViewController.xib */; };
-		7639DFDC1EB4C0E4001F566D /* MKMapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFDA1EB4C0E4001F566D /* MKMapViewExtension.swift */; };
 		7639DFE11EB4D34A001F566D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFE01EB4D34A001F566D /* API.swift */; };
 		7639DFE31EB4FBFA001F566D /* AutocompletionResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFE21EB4FBFA001F566D /* AutocompletionResponce.swift */; };
 		7639DFE51EB509F8001F566D /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7639DFE41EB509F8001F566D /* ForecastResponse.swift */; };
@@ -73,7 +72,6 @@
 		7639DFD11EB4A9A8001F566D /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		7639DFD51EB4AAD6001F566D /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
 		7639DFD61EB4AAD6001F566D /* AutoCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoCompleteViewController.xib; sourceTree = "<group>"; };
-		7639DFDA1EB4C0E4001F566D /* MKMapViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapViewExtension.swift; sourceTree = "<group>"; };
 		7639DFE01EB4D34A001F566D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		7639DFE21EB4FBFA001F566D /* AutocompletionResponce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompletionResponce.swift; sourceTree = "<group>"; };
 		7639DFE41EB509F8001F566D /* ForecastResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
@@ -237,18 +235,9 @@
 		7639DFD01EB4A973001F566D /* AutoCompleteTextField */ = {
 			isa = PBXGroup;
 			children = (
-				7639DFDD1EB4C0EB001F566D /* Helpers */,
 				7639DFD11EB4A9A8001F566D /* AutoCompleteTextField.swift */,
 			);
 			name = AutoCompleteTextField;
-			sourceTree = "<group>";
-		};
-		7639DFDD1EB4C0EB001F566D /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				7639DFDA1EB4C0E4001F566D /* MKMapViewExtension.swift */,
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 		7639DFE61EB512A7001F566D /* Main */ = {
@@ -477,7 +466,6 @@
 				7639DFC31EB40775001F566D /* CitiesTableViewController.swift in Sources */,
 				7639DFD71EB4AAD6001F566D /* AutoCompleteViewController.swift in Sources */,
 				7639DFE31EB4FBFA001F566D /* AutocompletionResponce.swift in Sources */,
-				7639DFDC1EB4C0E4001F566D /* MKMapViewExtension.swift in Sources */,
 				76B409471EB542620045D980 /* SettingsViewController.swift in Sources */,
 				76A828E11EB56AF200E40182 /* Transforms.swift in Sources */,
 				7639DFC11EB3EDFD001F566D /* DayWeather.swift in Sources */,

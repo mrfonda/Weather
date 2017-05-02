@@ -27,7 +27,7 @@ class ForecastCollectionViewController: UICollectionViewController {
       var currentWeatherView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
       currentWeatherView.backgroundColor = UIColor.clear
       
-      let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+      let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 5, width: 30, height: 30))
       activityIndicator.startAnimating()
       activityIndicator.color = UIColor.black
       currentWeatherView.addSubview(activityIndicator)
@@ -40,10 +40,10 @@ class ForecastCollectionViewController: UICollectionViewController {
         
         currentWeatherView = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
         currentWeatherView.backgroundColor = UIColor.clear
-        let icon = UIButton(frame: CGRect(x: 0, y: 8, width: 30, height: 30))
+        let icon = UIButton(frame: CGRect(x: 0, y: 5, width: 30, height: 30))
         icon.setImage(UIImage(named: (ob.icon.replacingOccurrences(of: ".png", with: ""))), for: .normal)
         
-        let temperature = UIButton(frame: CGRect(x: 20, y: 16, width: 60, height: 20))
+        let temperature = UIButton(frame: CGRect(x: 20, y: 10, width: 60, height: 20))
         temperature.setTitle(String(ob.tempC).appending("˚"), for: .normal)
         temperature.tintColor = UIColor.black
         temperature.setTitleColor(UIColor.black, for: .normal)

@@ -119,6 +119,7 @@ class API: NSObject {
       .downloadProgress(closure: { (progress: Progress) in
         updateProgress(Float(progress.fractionCompleted))
       })
+      
       .responseObject { (response : DataResponse<ForecastResponce>)  in
         
         switch response.result {
